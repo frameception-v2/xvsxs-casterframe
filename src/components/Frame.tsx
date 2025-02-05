@@ -21,6 +21,7 @@ import { useSession } from "next-auth/react";
 import { createStore } from "mipd";
 import { Label } from "~/components/ui/label";
 import { PROJECT_TITLE, NEYNAR_API_KEY, NEYNAR_API_URL } from "~/lib/constants";
+import Image from "next/image";
 
 function UserProfileCard({ fid }: { fid: number }) {
   const [profile, setProfile] = useState<any>(null);
@@ -91,10 +92,13 @@ function UserProfileCard({ fid }: { fid: number }) {
     <Card>
       <CardHeader>
         <div className="flex items-center gap-4">
-          <img 
-            src={profile.pfp_url} 
-            alt="Profile" 
-            className="w-12 h-12 rounded-full"
+          <Image 
+            src={profile.pfp_url}
+            alt="Profile"
+            width={48}
+            height={48}
+            className="rounded-full"
+            unoptimized
           />
           <div>
             <CardTitle>{profile.display_name}</CardTitle>
@@ -189,7 +193,9 @@ export default function Frame() {
     if (sdk && !isSDKLoaded) {
       setIsSDKLoaded(true);
       load();
-      return () => sdk.removeAllListeners();
+      return () => {
+        sdk.removeAllListeners();
+      };
     }
   }, [isSDKLoaded, addFrame]);
 
