@@ -140,7 +140,7 @@ function UserProfileCard({ fid }: { fid: number }) {
 
 export default function Frame() {
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
-  const [context, setContext] = useState<Context.FrameContext>();
+  const [context, setContext] = useState<Context>();
   const [added, setAdded] = useState(false);
   const [addFrameResult, setAddFrameResult] = useState("");
 
@@ -214,8 +214,8 @@ export default function Frame() {
         <h1 className="text-2xl font-bold text-center mb-4 text-neutral-900">
           {PROJECT_TITLE}
         </h1>
-        {context?.fid ? (
-          <UserProfileCard fid={context.fid} />
+        {context?.frame?.fid ? (
+          <UserProfileCard fid={context.frame.fid} />
         ) : (
           <Card>
             <CardContent className="pt-4">
