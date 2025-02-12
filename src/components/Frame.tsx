@@ -214,8 +214,8 @@ export default function Frame() {
         <h1 className="text-2xl font-bold text-center mb-4 text-neutral-900">
           {PROJECT_TITLE}
         </h1>
-        {context?.frame?.fid ? (
-          <UserProfileCard fid={context.frame.fid} />
+        {context?.fid ? (
+          <UserProfileCard fid={context.fid} />
         ) : (
           <Card>
             <CardContent className="pt-4">
